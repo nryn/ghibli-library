@@ -8,6 +8,7 @@ describe('All the basic feature requirements', () => {
   it('shows a list of 10 films', () => {
     cy.get('[data-test=FilmCard]').should('have.length', 10)
   })
+
   it('has the required information for all 10 visibile films', () => {
     cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 10)
     cy.get('[data-test=Title]').should('have.length', 10)
@@ -15,8 +16,24 @@ describe('All the basic feature requirements', () => {
     cy.get('[data-test=RunningTime]').should('have.length', 10)
   })
 
+  it('allows filtering the list to search', () => {
+    cy.get('[data-test=searchInput]').type('mo')
+
+    cy.contains(/Princess Mononoke/)
+    cy.contains(/Howl's Moving Castle/)
+
+    cy.contains(/Castle in the Sky/).should('not.exist')
+
+    const uniqueFilmLinks = new Set()
+
+    cy.get('[data-test^=ClickableThumbnail-]').each(($el) => {
+      uniqueFilmLinks.add($el.attr('data-test'))
+    }).then(() => {
+      expect(uniqueFilmLinks.size).to.equal(2)
+    })
+  })
+
   // Test Ideas:
-  // "Be able to search for a film"
   // "should see My neighbour totoro"
   // "click through on the thumbnail to see more details"
   // "see that Hayao Miyazaki is the director"
