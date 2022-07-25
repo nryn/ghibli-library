@@ -9,7 +9,7 @@ describe('All the basic feature requirements', () => {
     cy.get('[data-test=FilmCard]').should('have.length', 10)
   })
   it('has the required information for all 10 visibile films', () => {
-    cy.get('[data-test=ClickableThumbnail]').should('have.length', 10)
+    cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 10)
     cy.get('[data-test=Title]').should('have.length', 10)
     cy.get('[data-test=ReleaseDate]').should('have.length', 10)
     cy.get('[data-test=RunningTime]').should('have.length', 10)
