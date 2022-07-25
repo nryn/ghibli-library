@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# E2E Video files
+# E2E Video and Screenshot files
 cypress/videos
+cypress/screenshots
