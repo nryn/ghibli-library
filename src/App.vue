@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import FilmsList from './pages/FilmsList.vue';
 </script>
 
 <template>
-  <div>
-    Ghibli Library
-  </div>
+  <FilmsList />
 </template>
