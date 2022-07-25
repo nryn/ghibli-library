@@ -6,6 +6,6 @@ const films = store.films
 
 <template>
     <div>
-        <div v-for="(film, index) in films" :key="index" data-test="FilmCard">{{ film }}</div>
+        <div v-for="(film, index) in films" :key="index" data-test="FilmCard">{{ film.title }}</div>
     </div>
 </template>

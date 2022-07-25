@@ -1,3 +1,5 @@
+import { stubbedFilmDataFromAPI } from "./stubs"
+
 export const store = {
-    films: ['mononoke', 'ponyo', 'poppy hill']
+  films: stubbedFilmDataFromAPI
 }
