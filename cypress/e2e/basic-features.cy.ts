@@ -41,11 +41,26 @@ describe('All the basic feature requirements', () => {
       'Ashitaka, a prince of the disappearing Ainu tribe, is cursed by a demonized boar god and must journey to the west to find a cure. Along the way, he encounters San, a young human woman fighting to protect the forest, and Lady Eboshi, who is trying to destroy it. Ashitaka must find a way to bring balance to this conflict.'
     ]
 
-    filmDetails.forEach(string => { cy.contains(new RegExp(string)).should('not.exist') })
-    cy.get(`[data-test=ClickableThumbnail-${princessMononokeId}]`).click({ force: true })
-    filmDetails.forEach(string => { cy.contains(new RegExp(string)) })
-  })
+    const characterList = [
+      'Ashitaka',
+      'San',
+      'Yakul',
+      'Shishigami',
+      'Moro',
+      'Eboshi',
+      'Jigo',
+      'Kohroku',
+      'Gonza',
+      'Hii-sama'
+    ]
 
-  // Test Ideas:
-  // should see character names on detail page
+    const stringsToFind = [
+      ...filmDetails,
+      ...characterList,
+    ]
+
+    stringsToFind.forEach(string => { cy.contains(new RegExp(string)).should('not.exist') })
+    cy.get(`[data-test=ClickableThumbnail-${princessMononokeId}]`).click({ force: true })
+    stringsToFind.forEach(string => { cy.contains(new RegExp(string)) })
+  })
 })
