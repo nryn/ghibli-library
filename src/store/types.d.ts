@@ -1,5 +1,6 @@
 export interface State {
-  films: Film[]
+  rawFilms: Film[]
+  shownFilms: Film[]
 }
 
 // Created manually after hitting the endpoint https://ghibliapi.herokuapp.com/films

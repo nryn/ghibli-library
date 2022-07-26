@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { store } from '../store'
 
 const searchTerm = ref<string>('')
-const updateSearchTerm = () => {
-  console.log(`I would like to send ${searchTerm.value} to the store`)
-  // TODO send searchTerm.value to the store so it can be used to filter the film list...
-}
+const updateSearchTerm = () => { store.commit('setFilmSearchResult', searchTerm.value) }
 </script>
 
 <template>
