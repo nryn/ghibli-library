@@ -16,6 +16,32 @@ describe('All the basic feature requirements', () => {
     cy.get('[data-test=RunningTime]').should('have.length', 10)
   })
 
+  it('shows a link to see 10 different films', () => {
+    cy.contains(/Castle in the Sky/) // only exists on 1st page
+    cy.contains(/Spirited Away/).should('not.exist') // only exists on 2nd page
+
+    const uniqueFilmThumbnails = new Set()
+
+    // Collect the unique Film IDs on Page 1
+    cy.get('[data-test^=ClickableThumbnail-]').each(($el) => {
+      uniqueFilmThumbnails.add($el.attr('data-test'))
+    }).then(() => {
+      expect(uniqueFilmThumbnails.size).to.equal(10)
+    })
+
+    cy.get('[data-test=ShowMore]').click({ force: true })
+
+    cy.contains(/Castle in the Sky/).should('not.exist') // only exists on 1st page
+    cy.contains(/Spirited Away/) // only exists on 2nd page
+
+    // Collect the unique Film IDs on Page 2 and make sure they're all different to the Page 1 results
+    cy.get('[data-test^=ClickableThumbnail-]').each(($el) => {
+      uniqueFilmThumbnails.add($el.attr('data-test'))
+    }).then(() => {
+      expect(uniqueFilmThumbnails.size).to.equal(20)
+    })
+  })
+
   it('allows filtering the list to search', () => {
     cy.contains(/Castle in the Sky/)
     cy.get('[data-test=searchInput]').type('mo')
