@@ -43,6 +43,7 @@ describe('All the basic feature requirements', () => {
   })
 
   it('allows filtering the list to search', () => {
+    cy.visit('127.0.0.1:5173') // Navigate back to the start
     cy.contains(/Castle in the Sky/)
     cy.get('[data-test=searchInput]').type('mo')
     cy.contains(/Castle in the Sky/).should('not.exist')
