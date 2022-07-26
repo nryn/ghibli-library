@@ -47,3 +47,10 @@ As per the brief, these are the constraints I'm trying to work within:
 - Film details page will show more details about a specific film.
   - Must show `title`, `original_title`, `original_title_romanized`, `description`, `director` , `producer` , `release_date`, `running_time`, and `image`.
   - Must also show `people` and each of their `name`s.
+
+### Things that helped me
+
+At one point, I was a bit frustrated that I couldn't find a quick and easy way to have typings for Vuex's mutations and getters.
+It seems reasonable thing to have typings for these built-in, or at least be able to proving your own type arguments.
+
+[This article](https://dev.to/3vilarthas/vuex-typescript-m4j) from [Andrew Vasilchuk](https://github.com/andrewvasilchuk) helped me find a way to put together typings for the parts of the store that need it, manually.
