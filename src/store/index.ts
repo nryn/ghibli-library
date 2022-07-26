@@ -14,10 +14,12 @@ const state: State = {
   people: {},
   startingFilmIndex: 0,
   endingFilmIndex: 10,
+  filmSearchTerm: '',
 }
 
 const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.SET_FILM_SEARCH_RESULT](state, searchTerm) {
+    state.filmSearchTerm = searchTerm
     state.shownFilms = !searchTerm ? state.rawFilms : state.rawFilms.filter(filterOnSearchTerm(searchTerm))
     state.startingFilmIndex = 0
     state.endingFilmIndex = 10
@@ -45,7 +47,7 @@ const getters: GetterTree<State, State> & Getters = {
   filmById: (state: State) => (filmId: string) => state.rawFilms.find((film) => filmId === film.id),
   peopleForFilm: (state: State) => (filmId: string) => state.people[filmId],
   canShowMoreFilms: (state) => state.endingFilmIndex < state.shownFilms.length - 1,
-  peopleForFilm: (state: State) => (filmId: string) => state.people[filmId]
+  filmSearchTerm: (state) => state.filmSearchTerm
 }
 
 

@@ -12,6 +12,7 @@ export interface State {
   people: { [key: string]: Person[] }
   startingFilmIndex: number
   endingFilmIndex: number
+  filmSearchTerm: string
 }
 
 export type Getters = {
@@ -19,6 +20,7 @@ export type Getters = {
   filmById(state: State): (filmId: string) => Film | undefined
   peopleForFilm(state: State): (filmId: string) => People[]
   canShowMoreFilms(state: State): boolean
+  filmSearchTerm(state: State): string
 }
 
 export enum MutationTypes {
