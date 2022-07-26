@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { Film } from '../store/types';
+
 const props = defineProps<{
-  film: any // TODO: Fix this terrible crime
+  film: Film
 }>()
 </script>
 
