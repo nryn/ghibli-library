@@ -30,14 +30,14 @@ describe('All the basic feature requirements', () => {
     cy.get('[data-test=searchInput]').clear().type('mononoke')
     cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 1)
 
-    const princessMononokeId = 'v0440483e-ca0e-4120-8c50-4c8cd9b965d6'
+    const princessMononokeId = '0440483e-ca0e-4120-8c50-4c8cd9b965d6'
     const filmDetails = [
       'もののけ姫',
       'Mononoke hime',
       'Toshio Suzuki',
       'Hayao Miyazaki',
-      '1997',
-      '134',
+      'Released in 1997',
+      '134 Minutes',
       'Ashitaka, a prince of the disappearing Ainu tribe, is cursed by a demonized boar god and must journey to the west to find a cure. Along the way, he encounters San, a young human woman fighting to protect the forest, and Lady Eboshi, who is trying to destroy it. Ashitaka must find a way to bring balance to this conflict.'
     ]
 
