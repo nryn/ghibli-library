@@ -1,5 +1,4 @@
 import { createStore, GetterTree, MutationTree } from 'vuex'
-import { stubbedFilmDataFromAPI } from "./stubs"
 import { Film, Getters, Mutations, State, MutationTypes, Store } from './types.d'
 
 const filterOnSearchTerm = (searchTerm: string) => (film: Film) => {
@@ -9,13 +8,17 @@ const filterOnSearchTerm = (searchTerm: string) => (film: Film) => {
 }
 
 const state = {
-  rawFilms: stubbedFilmDataFromAPI,
-  shownFilms: stubbedFilmDataFromAPI,
+  rawFilms: [], // previously imported stubbedFilmDataFromAPI
+  shownFilms: [], // previously imported stubbedFilmDataFromAPI
 }
 
 const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.SET_FILM_SEARCH_RESULT](state, searchTerm) {
     state.shownFilms = !searchTerm ? state.rawFilms : state.rawFilms.filter(filterOnSearchTerm(searchTerm))
+  },
+  [MutationTypes.SET_RAW_FILMS](state, rawFilms) {
+    state.rawFilms = rawFilms
+    state.shownFilms = rawFilms
   },
 }
 

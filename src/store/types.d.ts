@@ -15,11 +15,13 @@ export type Getters = {
 }
 
 export enum MutationTypes {
-  SET_FILM_SEARCH_RESULT = 'SET_FILM_SEARCH_RESULT'
+  SET_FILM_SEARCH_RESULT = 'SET_FILM_SEARCH_RESULT',
+  SET_RAW_FILMS = 'SET_RAW_FILMS'
 }
 
 export type Mutations<S = State> = {
   [MutationTypes.SET_FILM_SEARCH_RESULT](state: S, payload: string): void
+  [MutationTypes.SET_RAW_FILMS](state: S, payload: Film[]): void
 }
 
 export type Store = Omit<
