@@ -17,24 +17,35 @@ describe('All the basic feature requirements', () => {
   })
 
   it('allows filtering the list to search', () => {
+    cy.contains(/Castle in the Sky/)
     cy.get('[data-test=searchInput]').type('mo')
-
-    cy.contains(/Princess Mononoke/)
-    cy.contains(/Howl's Moving Castle/)
-
     cy.contains(/Castle in the Sky/).should('not.exist')
 
-    const uniqueFilmLinks = new Set()
+    cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 2)
+    cy.contains(/Princess Mononoke/)
+    cy.contains(/Howl's Moving Castle/)
+  })
 
-    cy.get('[data-test^=ClickableThumbnail-]').each(($el) => {
-      uniqueFilmLinks.add($el.attr('data-test'))
-    }).then(() => {
-      expect(uniqueFilmLinks.size).to.equal(2)
-    })
+  it('shows film details when clicking through', () => {
+    cy.get('[data-test=searchInput]').clear().type('mononoke')
+    cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 1)
+
+    const princessMononokeId = 'v0440483e-ca0e-4120-8c50-4c8cd9b965d6'
+    const filmDetails = [
+      'もののけ姫',
+      'Mononoke hime',
+      'Toshio Suzuki',
+      'Hayao Miyazaki',
+      '1997',
+      '134',
+      'Ashitaka, a prince of the disappearing Ainu tribe, is cursed by a demonized boar god and must journey to the west to find a cure. Along the way, he encounters San, a young human woman fighting to protect the forest, and Lady Eboshi, who is trying to destroy it. Ashitaka must find a way to bring balance to this conflict.'
+    ]
+
+    filmDetails.forEach(string => { cy.contains(new RegExp(string)).should('not.exist') })
+    cy.get(`[data-test=ClickableThumbnail-${princessMononokeId}]`).click({ force: true })
+    filmDetails.forEach(string => { cy.contains(new RegExp(string)) })
   })
 
   // Test Ideas:
-  // "should see My neighbour totoro"
-  // "click through on the thumbnail to see more details"
-  // "see that Hayao Miyazaki is the director"
+  // should see character names on detail page
 })

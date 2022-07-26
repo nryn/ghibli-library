@@ -19,6 +19,7 @@ Rough plan and order in which to do things
     - "should see Princess Mononoke"
     - "click through on the thumbnail to see more details"
     - "see that Hayao Miyazaki is the director"
+    - "see the character names"
 - Set up Vite project with Vue and VueX
   - Install known dependencies/packages
   - Sort out config for tailwind, cypress etc if quick. Could do this later.
