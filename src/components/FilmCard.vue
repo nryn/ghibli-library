@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Film } from '../store/types';
+import { Film } from '../store/types'
 
 const props = defineProps<{
   film: Film

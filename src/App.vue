@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FilmsList from './pages/FilmsList.vue';
+import FilmsList from './pages/FilmsList.vue'
 </script>
 
 <template>
