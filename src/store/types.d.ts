@@ -10,24 +10,29 @@ export interface State {
   rawFilms: Film[]
   shownFilms: Film[]
   people: { [key: string]: Person[] }
+  startingFilmIndex: number
+  endingFilmIndex: number
 }
 
 export type Getters = {
   tenFilms(state: State): Film[]
   filmById(state: State): (filmId: string) => Film | undefined
   peopleForFilm(state: State): (filmId: string) => People[]
+  canShowMoreFilms(state: State): boolean
 }
 
 export enum MutationTypes {
   SET_FILM_SEARCH_RESULT = 'SET_FILM_SEARCH_RESULT',
   SET_RAW_FILMS = 'SET_RAW_FILMS',
-  SET_PEOPLE_FOR_FILM = 'SET_PEOPLE_FOR_FILM'
+  SET_PEOPLE_FOR_FILM = 'SET_PEOPLE_FOR_FILM',
+  SHOW_MORE_FILMS = 'SHOW_MORE_FILMS'
 }
 
 export type Mutations<S = State> = {
   [MutationTypes.SET_FILM_SEARCH_RESULT](state: S, payload: string): void
   [MutationTypes.SET_RAW_FILMS](state: S, payload: Film[]): void
   [MutationTypes.SET_PEOPLE_FOR_FILM](state: S, payload: { people: Person[], filmId: string }): void
+  [MutationTypes.SHOW_MORE_FILMS](state: S): void
 }
 
 export enum ActionTypes {
@@ -54,7 +59,7 @@ export type Store = Omit<
 > & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
     key: K,
-    payload: P,
+    payload?: P,
     options?: CommitOptions
   ): ReturnType<Mutations[K]>
 } & {

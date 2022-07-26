@@ -12,11 +12,15 @@ const state: State = {
   rawFilms: [], // previously imported stubbedFilmDataFromAPI
   shownFilms: [], // previously imported stubbedFilmDataFromAPI
   people: {},
+  startingFilmIndex: 0,
+  endingFilmIndex: 10,
 }
 
 const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.SET_FILM_SEARCH_RESULT](state, searchTerm) {
     state.shownFilms = !searchTerm ? state.rawFilms : state.rawFilms.filter(filterOnSearchTerm(searchTerm))
+    state.startingFilmIndex = 0
+    state.endingFilmIndex = 10
   },
   [MutationTypes.SET_RAW_FILMS](state, rawFilms) {
     state.rawFilms = rawFilms
@@ -25,11 +29,22 @@ const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.SET_PEOPLE_FOR_FILM](state, { people, filmId }) {
     state.people[filmId] = people
   },
+  [MutationTypes.SHOW_MORE_FILMS](state) {
+    if (state.endingFilmIndex >= state.shownFilms.length - 1) {
+      state.startingFilmIndex = 0
+      state.endingFilmIndex = 10
+    } else {
+      state.startingFilmIndex += 10
+      state.endingFilmIndex += 10
+    }
+  },
 }
 
 const getters: GetterTree<State, State> & Getters = {
-  tenFilms: (state: State) => state.shownFilms.slice(0, 10),
+  tenFilms: (state: State) => state.shownFilms.slice(state.startingFilmIndex, state.endingFilmIndex),
   filmById: (state: State) => (filmId: string) => state.rawFilms.find((film) => filmId === film.id),
+  peopleForFilm: (state: State) => (filmId: string) => state.people[filmId],
+  canShowMoreFilms: (state) => state.endingFilmIndex < state.shownFilms.length - 1,
   peopleForFilm: (state: State) => (filmId: string) => state.people[filmId]
 }
 
