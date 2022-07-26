@@ -11,11 +11,14 @@ const filterOnSearchTerm = (searchTerm: string) => (film: Film) => {
 export const store = createStore<State>({
   state: {
     rawFilms: stubbedFilmDataFromAPI,
-    shownFilms: stubbedFilmDataFromAPI.slice(0, 10),
+    shownFilms: stubbedFilmDataFromAPI,
   },
   mutations: {
     setFilmSearchResult(state, searchTerm) {
-      state.shownFilms = !searchTerm ? state.rawFilms.slice(0, 10) : state.rawFilms.filter(filterOnSearchTerm(searchTerm)).slice(0, 10)
+      state.shownFilms = !searchTerm ? state.rawFilms : state.rawFilms.filter(filterOnSearchTerm(searchTerm))
     },
+  },
+  getters: {
+    tenFilms: (state) => state.shownFilms.slice(0, 10),
   }
 })

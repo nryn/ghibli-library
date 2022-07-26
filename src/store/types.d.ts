@@ -3,6 +3,10 @@ export interface State {
   shownFilms: Film[]
 }
 
+export interface Getters {
+  tenFilms: () => Film[]
+}
+
 // Created manually after hitting the endpoint https://ghibliapi.herokuapp.com/films
 type Film = {
   id: string

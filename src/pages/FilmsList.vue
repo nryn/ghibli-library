@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { store } from '../store'
 import FilmCard from '../components/FilmCard.vue'
 import FilmSearchBar from '../components/FilmSearchBar.vue'
 
-const films = store.state.shownFilms.slice(0, 10)
+const films = computed(() => store.getters.tenFilms)
 </script>
 
 <template>
