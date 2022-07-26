@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "e2e": "cypress run",
-    "e2e:watch": "cypress run --no-exit --headed",
+    "e2e": "cypress run --browser chrome",
+    "e2e:watch": "cypress run --no-exit --headed --browser chrome",
     "e2e:ci": "start-server-and-test dev http://localhost:5173 e2e"
   },
   "dependencies": {
