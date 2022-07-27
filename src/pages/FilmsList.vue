@@ -22,7 +22,11 @@ const scrollToStart = () => {
         <div class="inline w-24"></div>
         <FilmCard v-for="(film, index) in films" :key="index" :film="film"/>
         <div class="m-4 max-w-xs scale-100 cursor-pointer" data-test="ShowMore" @click="showMoreFilms(); scrollToStart()">
-          {{ canShowMoreFilms() ? 'Show More' : 'You\'ve reached the end. Go back.' }}
+          <p class="whitespace-nowrap relative top-1/3 -left-1/3 rotate-90">
+            <span class="p-2 px-4 m-1 max-w-min bg-white bg-opacity-10 rounded-full whitespace-nowrap">
+              {{ canShowMoreFilms() ? 'Show More' : 'You\'ve reached the end. Go back.' }}
+            </span>
+          </p>
         </div>
         <div class="inline w-24"></div>
       </div>
