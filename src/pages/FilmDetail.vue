@@ -33,6 +33,8 @@ watchEffect(() => {
           </div>
       </div>
     </div>
-    <img :src="film?.image" />
+    <div class="w-full flex items-center justify-center mt-24">
+      <img class="min-w-min max-h-[80vh]" :src="film?.image" />
+    </div>
   </div>
 </template>
