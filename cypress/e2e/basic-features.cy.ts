@@ -57,7 +57,6 @@ describe('All the basic feature requirements', () => {
     cy.get('[data-test=searchInput]').clear().type('mononoke')
     cy.get('[data-test^=ClickableThumbnail-]').should('have.length', 1)
 
-    const princessMononokeId = '0440483e-ca0e-4120-8c50-4c8cd9b965d6'
     const filmDetails = [
       'もののけ姫',
       'Mononoke hime',
@@ -87,7 +86,7 @@ describe('All the basic feature requirements', () => {
     ]
 
     stringsToFind.forEach(string => { cy.contains(new RegExp(string)).should('not.exist') })
-    cy.get(`[data-test=ClickableThumbnail-${princessMononokeId}]`).click({ force: true })
+    cy.get(`[data-test^=ClickableThumbnail-]`).click({ force: true })
     stringsToFind.forEach(string => { cy.contains(new RegExp(string)) })
   })
 })
