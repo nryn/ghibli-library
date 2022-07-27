@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { store } from '../store'
 import { ActionTypes, MutationTypes } from '../store/types.d'
@@ -14,6 +14,8 @@ watchEffect(() => {
   store.dispatch(ActionTypes.GET_CHARACTERS_FOR_FILM, film?.value?.id || '')
   store.commit(MutationTypes.SET_DYNAMIC_BACKGROUND_URL, film?.value?.image)
 })
+
+const extraSkewedImage = ref(false)
 </script>
 
 <template>
@@ -39,8 +41,18 @@ watchEffect(() => {
         </div>
       </div>
       <div class="w-full flex items-center justify-center mt-24">
-        <img class="min-w-min max-h-[80vh]" :src="film?.image" />
+        <img class="min-w-min skewed max-h-[90vh]" :class="{ 'extra-skewed': extraSkewedImage }" @mouseover="extraSkewedImage = true" @mouseleave="extraSkewedImage = false" :src="film?.image" />
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.skewed {
+  transition: all 0.7s ease-in-out;
+  transform: perspective(400px) translateZ(-100px) translateX(-10px) translateY(-100px) rotateY(-15deg);
+}
+.extra-skewed {
+  transform: perspective(1000px) translateZ(0px) translateX(-50px) translateY(-80px) rotateY(-10deg);
+}
+</style>
