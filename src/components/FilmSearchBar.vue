@@ -15,7 +15,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <input ref="searchTermElement" v-model="searchTerm" autofocus @input="updateSearchTerm" @blur="bringFocusBack" data-test="searchInput"/>
+  <div class="w-full flex justify-center items-center flex-col" >
+    <input
+      v-model="searchTerm"
+      ref="searchTermElement"
+      class="mt-12 p-4 bg-white bg-opacity-10 text-2xl h-12 text-center rounded-full outline-0"
+      autofocus 
+      data-test="searchInput"
+      @input="updateSearchTerm"
+      @blur="bringFocusBack" 
+    />
   </div>
 </template>

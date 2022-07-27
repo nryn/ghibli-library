@@ -4,7 +4,7 @@ const props = defineProps<{ film: Film }>()
 </script>
 
 <template>
-  <div data-test="FilmCard">
+  <div class="inline m-4 max-w-xs" data-test="FilmCard">
     <RouterLink :to="`/${props.film.id}`">
       <img :src="props.film.image" :alt="props.film.title" :data-test="`ClickableThumbnail-${film.id}`">
     </RouterLink>
