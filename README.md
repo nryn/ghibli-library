@@ -2,15 +2,22 @@
 
 This project is a Vue.js app, serving up information about Studio Ghibli’s filmography using the [public GhibliAPI endpoint](https://ghibliapi.herokuapp.com/#tag/Films).
 
-## Context
+## Dependencies and Usage
 
-This project is being completed as a technical exercise for an interview process.
+This project was put together using Node 16.16.
+First install dependencies: Run `yarn` or `npm install` (depending which manager is your favourite) in the root directory of the project.
+And then to run the local HTTP server `yarn dev` or `npm run dev`, and navigate to the logged localhost:port endpoint in your web browser.
 
-### Initial Braindump
+### Running tests
 
-After reading the brief for the project, I thought it useful to write down my thoughts, ideas and feelings about how to approach the task. What follows is that:
+This project contains only end-to-end tests, and was developed in a simple BDD-TDD fashion.
+To run these tests in a Chrome browser, first run the dev server as above and in another shell run `yarn e2e:watch` or `npm run e2e:watch`.
 
-Rough plan and order in which to do things
+These tests also automatically run using headless Chrome automatically in Github Actions when pushing commits to remote.
+
+## Initial Braindump
+
+My thoughts, ideas and feelings about how I want to approach the task. Rough plan and order in which to do things:
 
 - Write basic README
   - Explain requirements BDD style
@@ -32,12 +39,12 @@ Rough plan and order in which to do things
 - Come up with a nice design and try to implement it with tailwind
 - Update the README again
 
-### Technical requirements
+## Technical requirements
 
-As per the brief, these are the constraints I'm trying to work within:
+These are the constraints I'm trying to work within:
 
-- Two pages are required: An overview page to list the films, and a Film Details page.
-- Must use VueX as the client-side state store for all the data from the API.
+- Two pages only: An overview page to list the films, and a Film Details page.
+- Use VueX as the client-side state store for all the data from the API.
 
 - Overview Page
   - Must show up to 10 image thumbnails using the `image`, and also include the `title`, `release_date`, and `running_time`. The thumbnail should link to the corresponding Film Details page.
@@ -48,7 +55,11 @@ As per the brief, these are the constraints I'm trying to work within:
   - Must show `title`, `original_title`, `original_title_romanized`, `description`, `director` , `producer` , `release_date`, `running_time`, and `image`.
   - Must also show `people` and each of their `name`s.
 
-### Things that helped me
+These requirements should turn into test cases.
+
+## Things that hindered and helped me
+
+The question of "how good does the search need to be?" came up - right now it's case insensitive, but should it be clever when faced with apostrophes or other punctuation, or non-english alphabet characters like ö? To be honest, it would be a one-line change to add japanese title search, or director/producer... but I'll stick to the basic requirements!
 
 At one point, I was a bit frustrated that I couldn't find a quick and easy way to have typings for Vuex's mutations and getters.
 It seems reasonable thing to have typings for these built-in, or at least be able to proving your own type arguments.
@@ -56,3 +67,5 @@ It seems reasonable thing to have typings for these built-in, or at least be abl
 [This article](https://dev.to/3vilarthas/vuex-typescript-m4j) from [Andrew Vasilchuk](https://github.com/andrewvasilchuk) helped me find a way to put together typings for the parts of the store that need it, manually.
 
 Soot sprite svg used as the favicon here came from the [Studio Ghibli Park website](https://ghibli-park.jp/) and is their copyright. I will not publish the site with this icon.
+
+Soot sprite animated webp came from a [tumblr blog](https://fuckyeah-pixels.tumblr.com/post/31686542305) and the copyright is not clear. I will not publish the site with this image.
