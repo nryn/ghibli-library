@@ -30,7 +30,7 @@ watchEffect(() => {
           <p v-if="film?.release_date">Released in {{ film?.release_date }}</p>
           <p v-if="film?.running_time">{{ film?.running_time }} Minutes</p>
         </div>
-        <div v-if="characters.length" class="py-4">
+        <div v-if="characters?.length" class="py-4">
             <p>Characters:</p>
             <div class="flex flex-row flex-wrap mt-4 w-2/3">
                 <RoundedChip v-for="(character, index) in characters" :key="index" :text="character.name" />
