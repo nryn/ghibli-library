@@ -15,6 +15,7 @@ const state: State = {
   startingFilmIndex: 0,
   endingFilmIndex: 10,
   filmSearchTerm: '',
+  dynamicBackgroundUrl: '/default-background.jpeg',
 }
 
 const mutations: MutationTree<State> & Mutations = {
@@ -47,7 +48,8 @@ const getters: GetterTree<State, State> & Getters = {
   filmById: (state: State) => (filmId: string) => state.rawFilms.find((film) => filmId === film.id),
   peopleForFilm: (state: State) => (filmId: string) => state.people[filmId],
   canShowMoreFilms: (state) => state.endingFilmIndex < state.shownFilms.length - 1,
-  filmSearchTerm: (state) => state.filmSearchTerm
+  filmSearchTerm: (state) => state.filmSearchTerm,
+  dynamicBackgroundUrl: (state) => state.dynamicBackgroundUrl,
 }
 
 

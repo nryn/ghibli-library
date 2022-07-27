@@ -13,6 +13,7 @@ export interface State {
   startingFilmIndex: number
   endingFilmIndex: number
   filmSearchTerm: string
+  dynamicBackgroundUrl: string
 }
 
 export type Getters = {
@@ -21,6 +22,7 @@ export type Getters = {
   peopleForFilm(state: State): (filmId: string) => People[]
   canShowMoreFilms(state: State): boolean
   filmSearchTerm(state: State): string
+  dynamicBackgroundUrl(state: State): string
 }
 
 export enum MutationTypes {
