@@ -29,7 +29,7 @@ watchEffect(() => {
       <div v-if="characters.length" class="py-4">
           <p>Characters:</p>
           <div>
-              <p v-for="(character, index) in characters" :key="index">{{ character.name }}</p>
+            <span v-for="(character, index) in characters" :key="index" class="p-2 px-4 m-1 max-w-min bg-white bg-opacity-10 rounded-full whitespace-nowrap">{{ character.name }}</span>
           </div>
       </div>
     </div>
