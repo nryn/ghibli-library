@@ -9,8 +9,8 @@ const filterOnSearchTerm = (searchTerm: string) => (film: Film) => {
 }
 
 const state: State = {
-  rawFilms: [], // previously imported stubbedFilmDataFromAPI
-  shownFilms: [], // previously imported stubbedFilmDataFromAPI
+  rawFilms: [],
+  shownFilms: [],
   people: {},
   startingFilmIndex: 0,
   endingFilmIndex: 10,
