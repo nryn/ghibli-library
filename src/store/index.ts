@@ -41,6 +41,9 @@ const mutations: MutationTree<State> & Mutations = {
       state.endingFilmIndex += 10
     }
   },
+  [MutationTypes.SET_DYNAMIC_BACKGROUND_URL](state, imageUrl) {
+    state.dynamicBackgroundUrl = imageUrl || state.dynamicBackgroundUrl
+  },
 }
 
 const getters: GetterTree<State, State> & Getters = {

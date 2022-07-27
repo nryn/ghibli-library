@@ -2,7 +2,7 @@
 import { computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { store } from '../store'
-import { ActionTypes } from '../store/types.d'
+import { ActionTypes, MutationTypes } from '../store/types.d'
 import RoundedChip from '../components/RoundedChip.vue'
 import BackToFilmsButton from '../components/BackToFilmsButton.vue'
 
@@ -12,6 +12,7 @@ const characters = computed(() => store.getters.peopleForFilm(route.params.id as
 
 watchEffect(() => {
   store.dispatch(ActionTypes.GET_CHARACTERS_FOR_FILM, film?.value?.id || '')
+  store.commit(MutationTypes.SET_DYNAMIC_BACKGROUND_URL, film?.value?.image)
 })
 </script>
 

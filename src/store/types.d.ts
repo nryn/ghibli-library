@@ -29,7 +29,8 @@ export enum MutationTypes {
   SET_FILM_SEARCH_RESULT = 'SET_FILM_SEARCH_RESULT',
   SET_RAW_FILMS = 'SET_RAW_FILMS',
   SET_PEOPLE_FOR_FILM = 'SET_PEOPLE_FOR_FILM',
-  SHOW_MORE_FILMS = 'SHOW_MORE_FILMS'
+  SHOW_MORE_FILMS = 'SHOW_MORE_FILMS',
+  SET_DYNAMIC_BACKGROUND_URL = 'SET_DYNAMIC_BACKGROUND_URL',
 }
 
 export type Mutations<S = State> = {
@@ -37,6 +38,7 @@ export type Mutations<S = State> = {
   [MutationTypes.SET_RAW_FILMS](state: S, payload: Film[]): void
   [MutationTypes.SET_PEOPLE_FOR_FILM](state: S, payload: { people: Person[], filmId: string }): void
   [MutationTypes.SHOW_MORE_FILMS](state: S): void
+  [MutationTypes.SET_DYNAMIC_BACKGROUND_URL](state: S, imageUrl: string): void
 }
 
 export enum ActionTypes {
