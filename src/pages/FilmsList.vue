@@ -32,3 +32,9 @@ const scrollToStart = () => {
       </div>
   </div>
 </template>
+
+<style>
+.nearly-screen {
+  height: 92vh;
+}
+</style>
