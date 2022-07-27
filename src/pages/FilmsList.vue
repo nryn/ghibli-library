@@ -20,7 +20,7 @@ const scrollToStart = () => {
   <div>
     <FilmSearchBar/>
       <p v-if="films.length === 0" class="text-center mt-48">There are no films to show.</p>
-      <div v-else id="grid-container" class="grid grid-flow-row md:grid-flow-col auto-cols-max pl-48 overflow-x-scroll overflow-y-scroll md:overflow-y-clip mt-16 nearly-screen scroll-smooth">
+      <div v-else id="grid-container" class="grid grid-flow-row md:grid-flow-col auto-cols-max pl-48 overflow-x-scroll overflow-y-scroll md:overflow-y-clip mt-16 h-[92vh] scroll-smooth">
         <div class="inline w-24"></div>
         <FilmCard v-for="(film, index) in films" :key="index" :film="film"/>
         <div class="m-4 max-w-xs scale-100 cursor-pointer" @click="showMoreFilms(); scrollToStart()">
@@ -32,9 +32,3 @@ const scrollToStart = () => {
       </div>
   </div>
 </template>
-
-<style>
-.nearly-screen {
-  height: 92vh;
-}
-</style>
