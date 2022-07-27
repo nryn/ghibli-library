@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DynamicBackground from './components/DynamicBackground.vue'
+import SusuwatariWalk from './components/SusuwatariWalk.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import DynamicBackground from './components/DynamicBackground.vue'
           <component :is="Component" />
         </Transition>
       </RouterView>
+      <SusuwatariWalk />
     </div>
   </Transition>
 </template>
