@@ -54,3 +54,5 @@ At one point, I was a bit frustrated that I couldn't find a quick and easy way t
 It seems reasonable thing to have typings for these built-in, or at least be able to proving your own type arguments.
 
 [This article](https://dev.to/3vilarthas/vuex-typescript-m4j) from [Andrew Vasilchuk](https://github.com/andrewvasilchuk) helped me find a way to put together typings for the parts of the store that need it, manually.
+
+Soot sprite svg used as the favicon here came from the [Studio Ghibli Park website](https://ghibli-park.jp/) and is their copyright. I will not publish the site with this icon.
