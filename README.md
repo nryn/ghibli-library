@@ -59,6 +59,8 @@ These requirements should turn into test cases.
 
 ## Things that hindered and helped me
 
+I de-prioritsed mobile styling, and as a result it does not yet look good on smaller screens, with the Film Detail images seeming to bug out (when viewed on real mobile devices rather than emulation)!
+
 The question of "how good does the search need to be?" came up - right now it's case insensitive, but should it be clever when faced with apostrophes or other punctuation, or non-english alphabet characters like ö? To be honest, it would be a one-line change to add japanese title search, or director/producer... but I'll stick to the basic requirements!
 
 At one point, I was a bit frustrated that I couldn't find a quick and easy way to have typings for Vuex's mutations and getters.
