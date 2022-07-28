@@ -17,7 +17,7 @@ const showInputLabel = ref(false)
 </script>
 
 <template>
-  <div class="w-full flex justify-center items-center flex-col" >
+  <div class="w-full flex justify-center items-center flex-col fixed md:relative" >
     <input
       v-model="searchTerm"
       id="searchTermElement"
@@ -32,7 +32,7 @@ const showInputLabel = ref(false)
     />
     <label
       for="searchTermElement"
-      class="mt-3 transition-opacity duration-500"
+      class="mx-8 mt-3 transition-opacity duration-500"
       :class="{ 'opacity-0' : !showInputLabel, 'opacity-70': showInputLabel }"
     >
       Search for a Film Title (English) or a Release Year

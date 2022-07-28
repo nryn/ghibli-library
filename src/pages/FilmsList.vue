@@ -20,11 +20,15 @@ const scrollToStart = () => {
   <div>
     <FilmSearchBar/>
       <p v-if="films.length === 0" class="text-center mt-48">There are no films to show.</p>
-      <div v-else id="grid-container" class="grid grid-flow-row md:grid-flow-col auto-cols-max pl-48 overflow-x-scroll overflow-y-scroll md:overflow-y-clip mt-16 h-[92vh] scroll-smooth">
+      <div 
+        v-else 
+        id="grid-container" 
+        class="md:grid grid-flow-row md:grid-flow-col auto-cols-max md:pl-48 overflow-x-scroll overflow-y-scroll md:overflow-y-clip mt-4 md:mt-16 md:h-[92vh] scroll-smooth"
+      >
         <div class="inline w-24"></div>
         <FilmCard v-for="(film, index) in films" :key="index" :film="film"/>
         <div class="m-4 max-w-xs scale-100 cursor-pointer" @click="showMoreFilms(); scrollToStart()">
-          <p class="whitespace-nowrap relative top-1/3 -left-1/3 rotate-90">
+          <p class="whitespace-nowrap md:relative md:top-1/3 md:-left-1/3 md:rotate-90 mb-8 md:mb-0">
             <RoundedChip :text="`${canShowMoreFilms() ? 'Show More' : 'You\'ve reached the end. Go back ⬇'}`" clickable data-test="ShowMore"/>
           </p>
         </div>

@@ -22,9 +22,9 @@ const extraSkewedImage = ref(false)
   <div>
     <BackToFilmsButton />
     <div class="flex flex-col md:flex-row items-center">
-      <div class="w-full p-8 ml-4 md:ml-16 z-20 pointer-events-none">
-        <h1 v-if="film" class="text-3xl my-4 whitespace-nowrap">{{ film.title }}</h1>
-        <p class="text-6xl my-4 whitespace-nowrap inline mr-4">{{ film?.original_title }}</p>
+      <div class="w-full p-8 ml-4 mt-8 md:ml-16 z-20 pointer-events-none">
+        <h1 v-if="film" class="text-3xl my-4 md:whitespace-nowrap">{{ film.title }}</h1>
+        <p class="text-6xl my-4 md:whitespace-nowrap inline mr-4">{{ film?.original_title }}</p>
         <span v-if="film?.original_title_romanised" class="whitespace-nowrap italic text-sm opacity-40">[ {{ film?.original_title_romanised }} ]</span>
         <p class="text-m my-4">{{ film?.description }}</p>
         <div class="opacity-40">
@@ -41,7 +41,7 @@ const extraSkewedImage = ref(false)
         </div>
       </div>
       <div class="w-full flex items-center justify-center mt-24">
-        <img class="min-w-min skewed max-h-[90vh]" :class="{ 'extra-skewed': extraSkewedImage }" @mouseover="extraSkewedImage = true" @mouseleave="extraSkewedImage = false" :src="film?.image" />
+        <img class="min-w-min skewed md:max-h-[90vh]" :class="{ 'extra-skewed': extraSkewedImage }" @mouseover="extraSkewedImage = true" @mouseleave="extraSkewedImage = false" :src="film?.image" />
       </div>
     </div>
   </div>
@@ -49,10 +49,14 @@ const extraSkewedImage = ref(false)
 
 <style>
 .skewed {
+  -webkit-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
   transition: all 0.7s ease-in-out;
-  transform: perspective(400px) translateZ(-100px) translateX(-10px) translateY(-100px) rotateY(-15deg);
+  -webkit-transform: perspective(400px) translateZ(-100px) translateX(-10px) translateY(-100px) rotateY(-15deg);
+          transform: perspective(400px) translateZ(-100px) translateX(-10px) translateY(-100px) rotateY(-15deg);
 }
 .extra-skewed {
-  transform: perspective(1000px) translateZ(0px) translateX(-50px) translateY(-80px) rotateY(-10deg);
+  -webkit-transform: perspective(1000px) translateZ(0px) translateX(-50px) translateY(-80px) rotateY(-10deg);
+          transform: perspective(1000px) translateZ(0px) translateX(-50px) translateY(-80px) rotateY(-10deg);
 }
 </style>
